@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap");
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --transition-one: all 0.3s ease-in-out;
+}
+
+.light {
+  --clr-primary: #2dc169;
+  --clr-hover: #1db44f;
+  --clr-background: #f1f8fc;
+  --clr-dark-one: #312f3a;
+  --clr-dark-two: #45424b;
+  --clr-light-one: #919191;
+  --clr-light-two: #aaa;
+}
+
+.dark {
+  --clr-primary: #2dc169;
+  --clr-hover: #1db44f;
+  --clr-background: #192e3a;
+  --clr-dark-one: #f3f3f3;
+  --clr-dark-two: #fff;
+  --clr-light-one: #ccc;
+  --clr-light-two: #e7e7e7;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.big-wrapper {
+  padding: 1.7rem 0 2rem;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: var(--clr-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+  &__shap {
+    position: absolute;
+    z-index: 0;
+    width: 500px;
+    bottom: -180px;
+    left: -15px;
+    opacity: 0.1;
+  }
+
+  .links {
+    &__toggle-btn {
+      display: inline-block;
+      border: 0;
+      background: var(--clr-dark-two);
+      color: var(--clr-background);
+      height: 39px;
+      width: 39px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: var(--clr-primary);
+      }
+
+      & i {
+        line-height: 39px;
+      }
+
+      & i:last-child {
+        display: none;
+      }
+    }
+  }
+  &.light {
+    .links {
+      &__toggle-btn i:last-child {
+        display: none;
+      }
+      &__toggle-btn i:first-child {
+        display: block;
+      }
+    }
+    #person {
+      content: url("../img/person.png");
+    }
+  }
+  &.dark {
+    .links {
+      &__toggle-btn i:last-child {
+        display: block;
+      }
+      &__toggle-btn i:first-child {
+        display: none;
+      }
+    }
+    #person {
+      content: url("../img/person2.png");
+    }
+  }
+}
+
+.container {
+  max-width: 81rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+  position: relative;
+  z-index: 10;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.9rem 1.9rem;
+  color: #fff !important;
+  background-color: var(--clr-primary);
+  border-radius: 16px;
+  text-transform: capitalize;
+  transition: var(--transition-one) s;
+
+  &:hover {
+    background-color: var(--clr-hover);
+    transform: scale(1) !important;
+  }
+}
+
+header {
+  position: relative;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      width: 50px;
+      margin-right: 0.6rem;
+      margin-top: -0.6rem;
+      margin-top: 0.2rem;
+    }
+
+    h3 {
+      color: var(--clr-dark-two);
+      font-size: 1.55rem;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+  }
+
+  .links {
+    ul {
+      display: flex;
+      align-items: center;
+    }
+
+    a {
+      color: var(--clr-light-two);
+      margin-left: 4.5rem;
+      display: inline-block;
+      transition: var(--transition-one);
+
+      &:hover {
+        color: var(--clr-hover);
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .hero {
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+    }
+    &__left {
+      font-size: 1.4rem;
+      color: var(--clr-dark-one);
+      text-transform: capitalize;
+      line-height: 1.4;
+
+      &__text {
+        color: var(--clr-light-one);
+        font-size: 1.1rem;
+        margin: 1.9rem 0 1.9rem;
+        max-width: 600px;
+        line-height: 2;
+      }
+
+      &__cta {
+        .btn {
+          box-shadow: 0 0 40px 2px rgba(0, 0, 0, 0.05);
+        }
+      }
+    }
+
+    &__right {
+      &__person {
+        width: 90%;
+      }
+    }
+  }
+  .copy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    animation: appear 1.5s 1 both;
+  }
+
+  @keyframes appear {
+    0% {
+      clip-path: circle(0% at 50% 120%);
+    }
+    100% {
+      clip-path: circle(100% at 50% 120%);
+    }
+  }
+}
